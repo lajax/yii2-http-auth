@@ -1,0 +1,25 @@
+{
+    "name": "lajax/yii2-http-auth",
+    "description": "Yii2 Http Authentication extension",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "extension", "authentication", "http", "security", " username", "password", "allowedIps"],
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/lajax/yii2-http-auth/issues?state=open",
+        "source": "https://github.com/lajax/yii2-http-auth"
+    },
+    "authors": [
+        {
+            "name": "Lajos Molnár",
+            "email": "lajax.m@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "lajax\\httpauth\\": ""
+        }
+    }
+}
