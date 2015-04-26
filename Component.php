@@ -20,7 +20,6 @@ use yii\web\UnauthorizedHttpException;
  *          'users' => [
  *              'mrsith' => '123456',
  *              'mrssith' => 'e10adc3949ba59abbe56e057f20f883e',
- *              
  *          ]
  *      ],
  *      // ...
@@ -50,7 +49,7 @@ class Component extends \yii\base\Component
     public function init()
     {
 
-        if ($this->_checkAllowedIps() || $this->_checkHttpAuthentication()) {
+        if (Yii::$app->request->isConsoleRequest || $this->_checkAllowedIps() || $this->_checkHttpAuthentication()) {
             return;
         }
 
