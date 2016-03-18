@@ -36,7 +36,8 @@ Usage
         'users' => [
             'mrsmith' => '123456',
             'mrssmith' => 'e10adc3949ba59abbe56e057f20f883e'
-        ]
+        ],
+        'errorAction' => 'site/error',
     ],
     // ...
 ]

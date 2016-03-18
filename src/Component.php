@@ -7,9 +7,9 @@ use yii\web\UnauthorizedHttpException;
 
 /**
  * Yii2 Http Authentication component.
- * 
+ *
  * config:
- * 
+ *
  * ~~~
  * 'bootstrap' => ['httpAuth'],
  * 'components' => [
@@ -20,13 +20,14 @@ use yii\web\UnauthorizedHttpException;
  *          'users' => [
  *              'mrsith' => '123456',
  *              'mrssith' => 'e10adc3949ba59abbe56e057f20f883e',
- *          ]
+ *          ],
+ *          'errorAction' => 'site/error',
  *      ],
  *      // ...
  * ],
  * // ...
  * ~~~
- * 
+ *
  * @author Lajos Molnár <lajax.m@gmail.com>
  * @since 1.0
  */
@@ -41,7 +42,12 @@ class Component extends \yii\base\Component
     /**
      * @var array the list of IPs that are allowed to access this application.
      */
-    public $allowedIps;
+    public $allowedIps = ['127.0.0.1', '::1'];
+
+    /**
+     * @var string The route of errorHandler page.
+     */
+    public $errorAction;
 
     /**
      * @inheritdoc
@@ -54,6 +60,11 @@ class Component extends \yii\base\Component
         }
 
         Yii::$app->response->headers->add('WWW-Authenticate', 'Basic realm="HTTP authentication"');
+
+        if ($this->errorAction) {
+            Yii::$app->errorHandler->errorAction = $this->errorAction;
+        }
+
         throw new UnauthorizedHttpException(Yii::t('yii', 'You are not allowed to perform this action.'), 401);
     }
 
@@ -62,8 +73,12 @@ class Component extends \yii\base\Component
      */
     private function _checkAllowedIps()
     {
-        if (in_array(Yii::$app->request->getUserIP(), $this->allowedIps)) {
-            return true;
+
+        $ip = Yii::$app->request->getUserIP();
+        foreach ($this->allowedIps as $filter) {
+            if ($filter === '*' || $filter === $ip || (($pos = strpos($filter, '*')) !== false && !strncmp($ip, $filter, $pos))) {
+                return true;
+            }
         }
 
         return false;
