@@ -1,3 +1,5 @@
+# The 3-Clause BSD License
+
 Copyright (c) 2015, Lajos Molnár
 All rights reserved.
 

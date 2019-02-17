@@ -51,8 +51,13 @@ The value can be either an actual password, or an MD5 hash of the password.
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
+## License
+
+The 3-Clause BSD License. Please see [License File](LICENSE.md) for more information.
+
+
 [ico-version]: https://img.shields.io/packagist/v/lajax/yii2-http-auth.svg?style=flat
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
+[ico-license]: https://img.shields.io/badge/license-BSD3-brightgreen.svg?style=flat
 [ico-downloads]: https://img.shields.io/packagist/dt/lajax/yii2-http-auth.svg?style=flat
 
 [link-packagist]: https://packagist.org/packages/lajax/yii2-http-auth
