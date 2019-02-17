@@ -47,6 +47,12 @@ The value can be either an actual password, or an MD5 hash of the password.
 ]
 ```
 
+## Testing
+
+```
+composer test
+```
+
 ## Coding style
 
 The project uses the PSR-2 coding standard. Related commands:

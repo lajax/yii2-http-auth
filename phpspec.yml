@@ -1,0 +1,7 @@
+bootstrap: spec/bootstrap.php
+extensions:
+  LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension: ~
+suites:
+  default:
+    namespace: lajax\httpauth
+    psr4_prefix: lajax\httpauth
