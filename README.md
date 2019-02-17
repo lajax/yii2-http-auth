@@ -47,6 +47,13 @@ The value can be either an actual password, or an MD5 hash of the password.
 ]
 ```
 
+## Coding style
+
+The project uses the PSR-2 coding standard. Related commands:
+
+ - `composer cs-fix`: Fix coding style issues.
+ - `composer cs-check`: Check for coding style issues.
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
