@@ -29,11 +29,11 @@ use yii\web\UnauthorizedHttpException;
  * ~~~
  *
  * @author Lajos Molnár <lajax.m@gmail.com>
+ *
  * @since 1.0
  */
 class Component extends \yii\base\Component
 {
-
     /**
      * @var string[] Username and password pairs. The value can be either an actual password,
      * or an MD5 hash of the password.
@@ -55,7 +55,6 @@ class Component extends \yii\base\Component
      */
     public function init()
     {
-
         if (Yii::$app->request->isConsoleRequest || $this->_checkAllowedIps() || $this->_checkHttpAuthentication()) {
             return;
         }
@@ -70,11 +69,10 @@ class Component extends \yii\base\Component
     }
 
     /**
-     * @return boolean Whether the application can be accessed by the current user.
+     * @return bool Whether the application can be accessed by the current user.
      */
     private function _checkAllowedIps()
     {
-
         $ip = Yii::$app->request->getUserIP();
         foreach ($this->allowedIps as $filter) {
             if ($filter === '*' || $filter === $ip || (($pos = strpos($filter, '*')) !== false && !strncmp($ip, $filter, $pos))) {
@@ -86,7 +84,7 @@ class Component extends \yii\base\Component
     }
 
     /**
-     * @return boolean  Whether the application can be accessed by the current user.
+     * @return bool Whether the application can be accessed by the current user.
      */
     private function _checkHttpAuthentication()
     {
@@ -98,5 +96,4 @@ class Component extends \yii\base\Component
 
         return false;
     }
-
 }
