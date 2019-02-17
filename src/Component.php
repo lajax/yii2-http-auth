@@ -35,12 +35,13 @@ class Component extends \yii\base\Component
 {
 
     /**
-     * @var array Username and password pairs.
+     * @var string[] Username and password pairs. The value can be either an actual password,
+     * or an MD5 hash of the password.
      */
     public $users;
 
     /**
-     * @var array the list of IPs that are allowed to access this application.
+     * @var string[] The list of IPs that are allowed to access this application.
      */
     public $allowedIps = ['127.0.0.1', '::1'];
 

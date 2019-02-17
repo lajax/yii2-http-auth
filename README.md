@@ -1,30 +1,28 @@
-Http Authentication
-===================
-Yii2 Http Authentication extension
+# Yii2 HTTP authentication extension
 
-Installation
-------------
+This extension can be used to protect your Yii2 application with HTTP authentication against
+unauthorized access. For example you can use it to prevent users seeing your development environment. 
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+## Installation
 
-Either run
+Via [Composer](http://getcomposer.org/download/)
 
 ```
-php composer.phar require --prefer-dist lajax/yii2-http-auth "*"
+composer require lajax/yii2-http-auth
 ```
 
-or add
+## Usage
 
-```
-"lajax/yii2-http-auth": "*"
-```
+You need to `bootstrap` the component on the start of the application. 
 
-to the require section of your `composer.json` file.
+On execution the component will check the IP address of the user. If the IP address is not in the
+`allowedIps` list, a HTTP authentication will be performed.
 
-Usage
------
+With the `users` option you can specify username and password pairs for accessing the application.
+The value can be either an actual password, or an MD5 hash of the password. 
 
-##Config
+
+### Config
 
 ```php
 'bootstrap' => ['httpAuth'],
@@ -34,8 +32,10 @@ Usage
         'class' => 'lajax\httpauth\Component',
         'allowedIps' => ['127.0.0.1', '127.0.0.2'],
         'users' => [
+            // Actual password:
             'mrsmith' => '123456',
-            'mrssmith' => 'e10adc3949ba59abbe56e057f20f883e'
+            // MD5 hash of the password:
+            'mrssmith' => 'e10adc3949ba59abbe56e057f20f883e',
         ],
         'errorAction' => 'site/error',
     ],
