@@ -44,7 +44,7 @@ class ComponentSpec extends ObjectBehavior
         $this->shouldBeAnInstanceOf(Configurable::class);
     }
 
-    public function it_should_accept_authorized_ipv4_address()
+    public function it_accepts_authorized_ipv4_address()
     {
         $this->setAuthorizedUserIp();
 
@@ -52,7 +52,7 @@ class ComponentSpec extends ObjectBehavior
             ->duringInstantiation();
     }
 
-    public function it_should_accept_authorized_ipv6_address()
+    public function it_accepts_authorized_ipv6_address()
     {
         $this->setUserIp('::1');
 
@@ -60,7 +60,7 @@ class ComponentSpec extends ObjectBehavior
             ->duringInstantiation();
     }
 
-    public function it_should_accept_authorized_ipv4_address_when_ip_is_configured_with_asterisk()
+    public function it_accepts_authorized_ipv4_address_when_ip_is_configured_with_asterisk()
     {
         $this->setUserIp('127.0.100.100');
 
@@ -68,7 +68,7 @@ class ComponentSpec extends ObjectBehavior
             ->duringInstantiation();
     }
 
-    public function it_should_accept_authorized_ipv6_address_when_ip_is_configured_with_asterisk()
+    public function it_accepts_authorized_ipv6_address_when_ip_is_configured_with_asterisk()
     {
         $this->setUserIp('fe80:0:0:0:202:b3ff:fe1e:8329');
 
@@ -76,7 +76,7 @@ class ComponentSpec extends ObjectBehavior
             ->duringInstantiation();
     }
 
-    public function it_should_accept_correct_username_and_password_on_unauthorized_ip_address()
+    public function it_accepts_correct_username_and_password_on_unauthorized_ip_address()
     {
         $this->setUnauthorizedUserIp();
         $this->setHttpAuth('test', 'pw123456');
@@ -85,7 +85,7 @@ class ComponentSpec extends ObjectBehavior
             ->duringInstantiation();
     }
 
-    public function it_should_accept_correct_username_and_password_on_unauthorized_ip_address_when_password_is_hashed_in_config()
+    public function it_accepts_correct_username_and_password_on_unauthorized_ip_address_when_password_is_hashed_in_config()
     {
         $this->setUnauthorizedUserIp();
         $this->setHttpAuth('test_md5', 'pw654321');
@@ -94,7 +94,7 @@ class ComponentSpec extends ObjectBehavior
             ->duringInstantiation();
     }
 
-    public function it_should_throw_an_exception_with_unauthorized_ip_address()
+    public function it_throws_an_exception_on_unauthorized_ip_address()
     {
         $this->setUnauthorizedUserIp();
 
